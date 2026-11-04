@@ -1,0 +1,456 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+html{
+    /*makes the nav links glide instead of jumping*/
+    scroll-behavior: smooth;
+}
+body{
+    /*background color*/
+    background: #080808;
+    color: #fff;
+}
+#header{
+    width:100%;
+    height:100vh;
+    /* line below changes the background of the website */
+    background-image: url(Images/IMG_7023.png);
+    background-size: cover;
+    background-position: center;
+}
+.container{
+    padding: 10px 10%;
+}
+
+nav{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.logo{
+    width: 140px;
+}
+
+/*hide the hamburger icon on desktop - it only appears on small screens*/
+nav .fas{
+    display: none;
+}
+
+nav ul li{
+    display:inline-block;
+    list-style: none;
+    margin: 10px 20px;
+}
+/*title for headers*/
+nav ul li a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    position: relative;
+}
+/*position underline for headers*/
+nav ul li a::after{
+    content:'';
+    width:0;
+    height:3px;
+    background:#ff004f;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    transition: 0.5s;
+}
+nav ul li a:hover::after{
+    width:100%;
+}
+.header-text{
+    margin-top: 20%;
+    font-size: 30px;
+}
+.header-text h1{
+    font-size:60px;
+    margin-top:20px;
+}
+.header-text h1 span{
+    color:#ff004f;
+}
+/*--about--*/
+#about{
+    padding: 80px 0;
+    color: #ababab;
+}
+.row{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.about-col-1{
+    flex-basis: 35%;
+}
+.about-col-1 img{
+    width: 100%;
+    border-radius: 15px;
+}
+.about-col-2{
+    flex-basis: 60%;
+}
+
+.sub-title{
+    font-size: 60px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.tab-titles{
+    display: flex;
+    /*this was "40" with no unit before, so the spacing was being thrown out*/
+    margin: 20px 0 40px;
+}
+.tab-links{
+    margin-right: 50px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+}
+.tab-links::after{
+    content: '';
+    width: 0;
+    height: 3px;
+    background: #ff004f;
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    transition: 0.5s;
+}
+
+.tab-links.active-link::after{
+    width: 50%;
+}
+
+.tab-contents ul li{
+    list-style: none;
+    margin: 10px 0;
+}
+.tab-contents ul li span{
+    color:#b54769;
+    font-size: 14px;
+}
+.tab-contents{
+    display:none;
+}
+.tab-contents.active-tab{
+    display:block;
+}
+
+/*-------- projects --------*/
+
+#projects{
+    padding: 50px 0;
+}
+.section-intro{
+    color: #ababab;
+    margin-top: 20px;
+    max-width: 700px;
+    font-size: 15px;
+    line-height: 1.7;
+}
+.project-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    grid-gap: 40px;
+    margin-top: 50px;
+}
+.project-card{
+    background: #262626;
+    padding: 40px 30px;
+    border-radius: 10px;
+    transition: background 0.5s, transform 0.5s;
+    display: flex;
+    flex-direction: column;
+}
+.project-card:hover{
+    background: #ff004f;
+    transform: translateY(-10px);
+}
+.project-icon{
+    font-size: 40px;
+    color: #ff004f;
+    margin-bottom: 25px;
+    transition: color 0.5s;
+}
+.project-card:hover .project-icon{
+    color: #fff;
+}
+.project-card h2{
+    font-size: 26px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 15px;
+}
+.project-blurb{
+    color: #ababab;
+    font-size: 14px;
+    line-height: 1.7;
+    transition: color 0.5s;
+}
+.project-card:hover .project-blurb,
+.project-card:hover .project-points{
+    color: #fff;
+}
+.project-points{
+    margin: 20px 0;
+    padding-left: 18px;
+    color: #ababab;
+    font-size: 13px;
+    line-height: 1.8;
+    transition: color 0.5s;
+}
+.project-points li{
+    margin-bottom: 6px;
+}
+.project-points code{
+    font-family: 'Courier New', Courier, monospace;
+    background: rgba(255,255,255,0.1);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #ff8fb0;
+    transition: color 0.5s, background 0.5s;
+}
+.project-card:hover .project-points code{
+    color: #fff;
+    background: rgba(0,0,0,0.25);
+}
+.project-tags{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    /*pushes the tags and links to the bottom so every card lines up*/
+    margin-top: auto;
+    padding-top: 10px;
+}
+.project-tags span{
+    font-size: 12px;
+    padding: 5px 12px;
+    border: 1px solid #ff004f;
+    border-radius: 20px;
+    color: #ff004f;
+    transition: border 0.5s, color 0.5s;
+}
+.project-card:hover .project-tags span{
+    border-color: #fff;
+    color: #fff;
+}
+.project-links{
+    margin-top: 20px;
+}
+.project-links a{
+    text-decoration: none;
+    color: #ff004f;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.5s;
+}
+.project-links a:hover{
+    text-decoration: underline;
+}
+.project-card:hover .project-links a{
+    color: #fff;
+}
+.projects-cta{
+    text-align: center;
+    margin-top: 50px;
+}
+.btn{
+    display: inline-block;
+    margin: 10px auto;
+    width: fit-content;
+    border: 1px solid #ff004f;
+    padding: 14px 50px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #fff;
+    transition: background 0.5s;
+    cursor: pointer;
+}
+.btn:hover{
+    background: #ff004f;
+}
+.btn.btn-2{
+    background: #ff004f;
+    border: none;
+}
+.btn.btn-2:hover{
+    background: #d10041;
+}
+
+/*-------- skills --------*/
+
+#skills-section{
+    padding: 50px 0;
+}
+.skills-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 40px;
+    margin-top: 50px;
+}
+.skill-card{
+    background: #262626;
+    padding: 40px;
+    font-size: 13px;
+    font-weight: 300;
+    border-radius: 10px;
+    transition: background 0.5s, transform 0.5s;
+}
+.skill-card i{
+    font-size: 50px;
+    margin-bottom: 30px;
+    color: #ff004f;
+    transition: color 0.5s;
+}
+.skill-card h2{
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 15px;
+    color: #fff;
+}
+.skill-card p{
+    color: #ababab;
+    line-height: 1.7;
+    transition: color 0.5s;
+}
+.skill-card:hover{
+    background: #ff004f;
+    transform: translateY(-10px);
+}
+.skill-card:hover i,
+.skill-card:hover p{
+    color: #fff;
+}
+
+/*-------- contact --------*/
+
+#contact{
+    padding: 50px 0 0;
+}
+.contact-left{
+    flex-basis: 100%;
+}
+.contact-left p{
+    margin-top: 20px;
+    color: #ababab;
+    line-height: 1.7;
+    max-width: 700px;
+}
+.contact-left p i{
+    color: #ff004f;
+    margin-right: 15px;
+    font-size: 18px;
+}
+.social-icons{
+    margin-top: 30px;
+}
+.social-icons a{
+    text-decoration: none;
+    font-size: 30px;
+    margin-right: 15px;
+    color: #ababab;
+    display: inline-block;
+    transition: transform 0.5s, color 0.5s;
+}
+.social-icons a:hover{
+    color: #ff004f;
+    transform: translateY(-5px);
+}
+.copyright{
+    width: 100%;
+    text-align: center;
+    padding: 25px 0;
+    background: #262626;
+    font-weight: 300;
+    margin-top: 60px;
+    font-size: 14px;
+    color: #ababab;
+}
+
+/* -------css for small screens-------*/
+
+/*this said "max-with" before, which is not a real property - the whole
+  mobile layout below was being ignored by the browser*/
+@media only screen and (max-width: 600px){
+    #header{
+        background-image: url(Images/IMG_7023.png);
+    }
+    .header-text{
+        margin-top: 100%;
+        font-size: 16px;
+    }
+    .header-text h1{
+        font-size: 30px;
+    }
+    nav .fas{
+        display: block;
+        font-size: 25px;
+    }
+    nav ul{
+        background: #ff004f;
+        position: fixed;
+        top: 0;
+        right: -200px;
+        width: 200px;
+        height: 100vh;
+        padding-top: 50px;
+        z-index: 2;
+        transition: right 0.5s;
+    }
+    nav ul li{
+        display: block;
+        margin: 25px;
+    }
+    nav ul .fas{
+        position: absolute;
+        top: 25px;
+        left: 25px;
+        cursor: pointer;
+    }
+    .sub-title{
+        font-size: 40px;
+    }
+    .about-col-1, .about-col-2{
+        flex-basis: 100%;
+    }
+    .about-col-1{
+        margin-bottom: 30px;
+    }
+    .about-col-2{
+        font-size: 14px;
+    }
+    .tab-links{
+        font-size: 16px;
+        margin-right: 20px;
+    }
+    .project-list, .skills-list{
+        /*single column so the cards aren't squeezed on a phone*/
+        grid-template-columns: 1fr;
+        grid-gap: 25px;
+    }
+    .project-card, .skill-card{
+        padding: 30px 25px;
+    }
+    .project-card h2{
+        font-size: 22px;
+    }
+    .contact-left{
+        flex-basis: 100%;
+    }
+    .copyright{
+        font-size: 12px;
+    }
+}

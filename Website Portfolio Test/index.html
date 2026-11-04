@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Nathan Syhanath Portfolio</title>
+        <link rel="stylesheet" href="style.css">
+        <!--Poppins font (your CSS asks for it, but it was never being loaded)-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <!--Font Awesome, for the hamburger menu and the social/github icons-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    </head>
+    <body>
+        <div id="header">
+            <div class="container">
+                <nav>
+                    <!--top left to add logo-->
+                    <img src="Images/IMG_7023.png" class="logo" alt="Nathan Syhanath logo">
+                    <ul id="sidemenu">
+                        <!-- Lines below creates clickable links that will guide person to a specific page -->
+                        <li><a href="#header">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#skills-section">Skills</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <i class="fas fa-times" onclick="closemenu()"></i>
+                    </ul>
+                    <i class="fas fa-bars" onclick="openmenu()"></i>
+                </nav>
+                <div class="header-text">
+                    <p>Game Dev Designer</p>
+                    <h1>Hi, I'm <span>Nathan Syhanath</span></h1>
+                </div>
+            </div>
+        </div>
+
+        <!---About me Section-->
+        <div id="about">
+            <div class="container">
+                <div class="row">
+                    <div class="about-col-1">
+                        <!--put image to show in portfolio-->
+                        <img src="Images/IMG_0556.png" alt="Nathan Syhanath">
+                    </div>
+                    <div class="about-col-2">
+                        <h1 class="sub-title">About Me</h1>
+                        <p>
+                            <!--Write your discription for about me-->
+                            Hello! My name is Nathan and I am a entry level software engineer. Some of my hobbies are gaming, photography
+                            and content creation. Currently pursuing a 4 year degree in computer science and transition
+                            to becoming a game developer. My passion to become a game developer is because gaming has been a big part of
+                            my childhood and it has created so many friendships and unforgettable memories that hopefully I can create a game
+                            that can do the same thing for the future generations.
+                        </p>
+
+                        <div class="tab-titles">
+                            <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                            <p class="tab-links" onclick="opentab('experience')">Experience</p>
+                            <p class="tab-links" onclick="opentab('education')">Education</p>
+                        </div>
+                        <div class="tab-contents active-tab" id="skills">
+                            <ul>
+                                <!--putting in your description of the experience tabs-->
+                                <li><span>Systems &amp; Game Logic</span><br>C++ game engines, data structures, algorithm design</li>
+                                <li><span>UI/UX</span><br>Designing Web/App interfaces</li>
+                                <li><span>Web Development</span><br>Web/App development</li>
+                            </ul>
+                        </div>
+                        <div class="tab-contents" id="experience">
+                            <ul>
+                                <!--write about experiences here-->
+                                <li><span>Twenty Questions</span><br>Built a self-learning binary tree game in C++</li>
+                                <li><span>Take Away / Nim</span><br>Implemented an optimal AI opponent using bitwise strategy</li>
+                                <li><span>Personal Projects</span><br>Web development and front-end design</li>
+                            </ul>
+                        </div>
+                        <div class="tab-contents" id="education">
+                            <ul>
+                                <!--write about education here-->
+                                <li><span>B.S. Computer Science</span><br>Currently pursuing a 4 year degree</li>
+                                <li><span>Coursework</span><br>Data Structures, Algorithms, Object-Oriented Programming</li>
+                                <li><span>Focus</span><br>Game development and interactive systems</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!---Projects Section-->
+        <div id="projects">
+            <div class="container">
+                <h1 class="sub-title">My Projects</h1>
+                <p class="section-intro">
+                    Games and tools I've built from scratch in C++. Every project below is on GitHub &mdash;
+                    click through to read the source.
+                </p>
+                <div class="project-list">
+
+                    <!--Project 1: Twenty Questions-->
+                    <div class="project-card">
+                        <div class="project-icon"><i class="fas fa-code-branch"></i></div>
+                        <h2>Twenty Questions</h2>
+                        <p class="project-blurb">
+                            A guessing game where the computer tries to figure out what you're thinking of.
+                            The computer's knowledge is stored as a binary tree, and every time it guesses wrong
+                            it asks you for a new question and grafts it into the tree &mdash; so the game
+                            genuinely gets smarter the more you play it. Trees can be saved to disk and reloaded later.
+                        </p>
+                        <ul class="project-points">
+                            <li>Custom <code>Node</code> and <code>Tree</code> structs with recursive destructors for clean memory management</li>
+                            <li>Live tree restructuring &mdash; new questions are inserted mid-game without losing branches</li>
+                            <li>Save/load to two file formats via recursive pre-order traversal</li>
+                            <li>Command-line flags for loading a saved game (<code>-f</code>) and help text (<code>-h</code>)</li>
+                        </ul>
+                        <div class="project-tags">
+                            <span>C++</span>
+                            <span>Binary Trees</span>
+                            <span>Recursion</span>
+                            <span>File I/O</span>
+                            <span>Pointers</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Nsyhanath/20-Questions" target="_blank" rel="noopener">
+                                <i class="fab fa-github"></i> View on GitHub
+                            </a>
+                        </div>
+                    </div>
+
+                    <!--Project 2: Sticks and Stones-->
+                    <div class="project-card">
+                        <div class="project-icon"><i class="fas fa-layer-group"></i></div>
+                        <h2>Sticks and Stones</h2>
+                        <p class="project-blurb">
+                            A two-player take-away game (the classic game of Nim). Players take turns removing
+                            stones from a single pile, and whoever takes the last stone wins. The optional computer
+                            opponent plays the mathematically optimal strategy &mdash; it calculates the
+                            <em>nim sum</em> with an XOR across every pile and always moves to force a win when one exists.
+                        </p>
+                        <ul class="project-points">
+                            <li>Optimal AI using bitwise XOR to compute the nim sum and find the winning move</li>
+                            <li>Randomized board generation with <code>srand</code> for a different game every run</li>
+                            <li>Full input validation &mdash; no illegal moves, no over-drawing a pile</li>
+                            <li>Configurable via CLI flags for piles (<code>-p</code>), stones (<code>-s</code>), and computer opponent (<code>-c</code>)</li>
+                        </ul>
+                        <div class="project-tags">
+                            <span>C++</span>
+                            <span>Game AI</span>
+                            <span>Bitwise Logic</span>
+                            <span>STL Vectors</span>
+                            <span>Combinatorial Game Theory</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Nsyhanath/Sticks-and-Stones" target="_blank" rel="noopener">
+                                <i class="fab fa-github"></i> View on GitHub
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="projects-cta">
+                    <a href="https://github.com/Nsyhanath" target="_blank" rel="noopener" class="btn">
+                        <i class="fab fa-github"></i> See all my repositories
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!---Skills Section-->
+        <div id="skills-section">
+            <div class="container">
+                <h1 class="sub-title">What I Work With</h1>
+                <div class="skills-list">
+
+                    <div class="skill-card">
+                        <i class="fas fa-terminal"></i>
+                        <h2>Languages</h2>
+                        <p>
+                            C++ is my primary language &mdash; it's what I build games and systems in.
+                            I also work in HTML, CSS, and JavaScript for the web.
+                        </p>
+                    </div>
+
+                    <div class="skill-card">
+                        <i class="fas fa-sitemap"></i>
+                        <h2>Data Structures &amp; Algorithms</h2>
+                        <p>
+                            Binary trees, linked structures, recursion, and dynamic memory management.
+                            I build these from scratch rather than reaching for a library.
+                        </p>
+                    </div>
+
+                    <div class="skill-card">
+                        <i class="fas fa-gamepad"></i>
+                        <h2>Game Logic &amp; AI</h2>
+                        <p>
+                            Turn-based game loops, state management, and decision-making opponents &mdash;
+                            including provably optimal strategies based on game theory.
+                        </p>
+                    </div>
+
+                    <div class="skill-card">
+                        <i class="fas fa-laptop-code"></i>
+                        <h2>Web Development</h2>
+                        <p>
+                            Responsive front-end layouts with semantic HTML and modern CSS,
+                            including Flexbox and Grid.
+                        </p>
+                    </div>
+
+                    <div class="skill-card">
+                        <i class="fab fa-git-alt"></i>
+                        <h2>Tools &amp; Workflow</h2>
+                        <p>
+                            Git and GitHub for version control, command-line development,
+                            and building programs that take real CLI arguments.
+                        </p>
+                    </div>
+
+                    <div class="skill-card">
+                        <i class="fas fa-pen-nib"></i>
+                        <h2>Design &amp; Media</h2>
+                        <p>
+                            Photography and content creation, which feed directly into
+                            UI/UX work and visual design sense.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!---Contact Section-->
+        <div id="contact">
+            <div class="container">
+                <div class="row">
+                    <div class="contact-left">
+                        <h1 class="sub-title">Get In Touch</h1>
+                        <p>
+                            I'm always open to talking about game development, new projects,
+                            or entry-level software engineering opportunities.
+                        </p>
+                        <p><i class="fas fa-paper-plane"></i> nathan112202@gmail.com</p>
+                        <div class="social-icons">
+                            <a href="https://github.com/Nsyhanath" target="_blank" rel="noopener" aria-label="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <!--Add your own links below when you're ready-->
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        </div>
+                        <a href="mailto:nathan112202@gmail.com" class="btn btn-2">Email Me</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; Nathan Syhanath. Built from scratch.</p>
+            </div>
+        </div>
+
+    <script>
+
+        var tablinks = document.getElementsByClassName("tab-links");
+        var tabcontents = document.getElementsByClassName("tab-contents");
+        function opentab(tabname){
+            for(tablink of tablinks){
+                tablink.classList.remove("active-link");
+            }
+            for(tabcontent of tabcontents){
+                tabcontent.classList.remove("active-tab");
+            }
+            event.currentTarget.classList.add("active-link");
+            //this line was missing before, which is why the tabs never switched
+            document.getElementById(tabname).classList.add("active-tab");
+        }
+
+    </script>
+
+    <script>
+
+        var sidem = document.getElementById("sidemenu");
+
+        function openmenu(){
+            sidem.style.right = "0";
+        }
+        function closemenu(){
+            sidem.style.right = "-200px";
+        }
+
+        //close the mobile menu after tapping a nav link
+        document.querySelectorAll("#sidemenu a").forEach(function(link){
+            link.addEventListener("click", closemenu);
+        });
+
+    </script>
+
+    </body>
+</html>

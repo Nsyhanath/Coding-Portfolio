@@ -3,85 +3,129 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Nathan Syhanath Portfolio</title>
+        <title>Nathan Syhanath | Player 1</title>
         <link rel="stylesheet" href="style.css">
-        <!--Poppins font (your CSS asks for it, but it was never being loaded)-->
+        <!--Fonts: Press Start 2P for pixel headings, VT323 for HUD text, Chakra Petch for readable body copy-->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-        <!--Font Awesome, for the hamburger menu and the social/github icons-->
+        <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+        <!--Font Awesome, for icons-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     </head>
     <body>
-        <div id="header">
-            <div class="container">
-                <nav>
-                    <!--top left to add logo-->
-                    <img src="Images/IMG_7023.png" class="logo" alt="Nathan Syhanath logo">
-                    <ul id="sidemenu">
-                        <!-- Lines below creates clickable links that will guide person to a specific page -->
-                        <li><a href="#header">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#skills-section">Skills</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                        <i class="fas fa-times" onclick="closemenu()"></i>
-                    </ul>
-                    <i class="fas fa-bars" onclick="openmenu()"></i>
-                </nav>
-                <div class="header-text">
-                    <p>Game Dev Designer</p>
-                    <h1>Hi, I'm <span>Nathan Syhanath</span></h1>
-                </div>
+        <!--CRT scanline overlay that sits on top of the whole page-->
+        <div class="scanlines" aria-hidden="true"></div>
+
+        <!--Achievement popup (shown by the script at the bottom)-->
+        <div id="achievement" class="achievement" role="status" aria-live="polite">
+            <i class="fas fa-trophy"></i>
+            <div>
+                <span class="achievement-label">Achievement Unlocked</span>
+                <span id="achievement-text" class="achievement-text"></span>
             </div>
         </div>
 
-        <!---About me Section-->
+        <!---Title Screen: 8-bit blocky world drawn on a canvas by the script at the bottom-->
+        <header id="header">
+            <canvas id="world" aria-hidden="true"></canvas>
+            <div class="title-shade" aria-hidden="true"></div>
+
+            <div class="title-hud">
+                <span class="hud-label">SCORE</span>
+                <span id="score">000000</span>
+            </div>
+
+            <div class="title-content">
+                <h1 class="pixel-logo">
+                    <span>NATHAN</span>
+                    <span>SYHANATH</span>
+                </h1>
+                <p class="logo-sub">CODING PORTFOLIO</p>
+
+                <nav class="title-menu" aria-label="Main menu">
+                    <a href="#about" class="block-btn primary">Play</a>
+                    <a href="#projects" class="block-btn">Level Select</a>
+                    <a href="#skills-section" class="block-btn">Skill Tree</a>
+                    <div class="btn-row">
+                        <a href="#contact" class="block-btn">Multiplayer</a>
+                        <a href="https://github.com/Nsyhanath" target="_blank" rel="noopener" class="block-btn">GitHub</a>
+                    </div>
+                </nav>
+            </div>
+
+            <div class="title-footer">
+                <span>v1.0 &middot; Game Dev Designer</span>
+                <span>&copy; Nathan Syhanath</span>
+            </div>
+        </header>
+
+        <!--Button to jump back to the title screen (appears after scrolling)-->
+        <a href="#header" id="to-title" class="to-title" aria-label="Back to title screen">&#9650; TITLE</a>
+
+        <!---Player Profile (About)-->
         <div id="about">
             <div class="container">
+                <h1 class="sub-title"><span class="title-num">01</span> Player Profile</h1>
                 <div class="row">
                     <div class="about-col-1">
-                        <!--put image to show in portfolio-->
-                        <img src="Images/IMG_0556.png" alt="Nathan Syhanath">
+                        <div class="player-card">
+                            <div class="player-card-top">
+                                <span>P1</span>
+                                <span>LVL ??</span>
+                            </div>
+                            <img src="../Images/IMG_0556.png" alt="Nathan Syhanath">
+                            <div class="player-card-info">
+                                <h2>Nathan</h2>
+                                <p>Class: Game Dev Designer</p>
+                                <div class="bar-row">
+                                    <span>HP</span>
+                                    <div class="bar"><div class="bar-fill hp"></div></div>
+                                </div>
+                                <div class="bar-row">
+                                    <span>XP</span>
+                                    <div class="bar"><div class="bar-fill xp"></div></div>
+                                </div>
+                                <p class="next-level">Next level: Game Developer</p>
+                            </div>
+                        </div>
                     </div>
                     <div class="about-col-2">
-                        <h1 class="sub-title">About Me</h1>
-                        <p>
-                            <!--Write your discription for about me-->
-                            Hello! My name is Nathan and I am a entry level software engineer. Some of my hobbies are gaming, photography
-                            and content creation. Currently pursuing a 4 year degree in computer science and transition
-                            to becoming a game developer. My passion to become a game developer is because gaming has been a big part of
-                            my childhood and it has created so many friendships and unforgettable memories that hopefully I can create a game
-                            that can do the same thing for the future generations.
-                        </p>
+                        <div class="dialog-box">
+                            <span class="dialog-name">NATHAN</span>
+                            <p>
+                                Hi! I'm Nathan, an entry-level software engineer working toward becoming a game developer.
+                                I'm currently working on my 4-year computer science degree, and outside of class I'm into gaming,
+                                photography and content creation. Gaming was a huge part of my childhood. It gave me so many
+                                friendships and unforgettable memories, and I hope to make games that do the same for the next generation.
+                            </p>
+                            <span class="dialog-arrow" aria-hidden="true">&#9660;</span>
+                        </div>
 
-                        <div class="tab-titles">
-                            <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
-                            <p class="tab-links" onclick="opentab('experience')">Experience</p>
-                            <p class="tab-links" onclick="opentab('education')">Education</p>
+                        <div class="tab-titles" role="tablist">
+                            <button class="tab-links active-link" onclick="opentab(event, 'skills')">Abilities</button>
+                            <button class="tab-links" onclick="opentab(event, 'experience')">Quest Log</button>
+                            <button class="tab-links" onclick="opentab(event, 'education')">Training</button>
                         </div>
                         <div class="tab-contents active-tab" id="skills">
                             <ul>
-                                <!--putting in your description of the experience tabs-->
-                                <li><span>Systems &amp; Game Logic</span><br>C++ game engines, data structures, algorithm design</li>
-                                <li><span>UI/UX</span><br>Designing Web/App interfaces</li>
-                                <li><span>Web Development</span><br>Web/App development</li>
+                                <li><span>Systems &amp; Game Logic</span>C++ game engines, data structures and algorithm design</li>
+                                <li><span>UI/UX</span>Designing interfaces for websites and apps</li>
+                                <li><span>Web Development</span>Building websites and web apps</li>
                             </ul>
                         </div>
                         <div class="tab-contents" id="experience">
                             <ul>
-                                <!--write about experiences here-->
-                                <li><span>Twenty Questions</span><br>Built a self-learning binary tree game in C++</li>
-                                <li><span>Take Away / Nim</span><br>Implemented an optimal AI opponent using bitwise strategy</li>
-                                <li><span>Personal Projects</span><br>Web development and front-end design</li>
+                                <li><span>Twenty Questions</span>A self-learning guessing game in C++ built on a binary tree</li>
+                                <li><span>Sticks and Stones (Nim)</span>A computer opponent that plays the best possible move using bitwise math</li>
+                                <li><span>Unix Home Lab</span>Six Unix systems on one domain, with shared LDAP logins and my own certificate authority</li>
+                                <li><span>Personal Projects</span>Web development and front-end design</li>
                             </ul>
                         </div>
                         <div class="tab-contents" id="education">
                             <ul>
-                                <!--write about education here-->
-                                <li><span>B.S. Computer Science</span><br>Currently pursuing a 4 year degree</li>
-                                <li><span>Coursework</span><br>Data Structures, Algorithms, Object-Oriented Programming</li>
-                                <li><span>Focus</span><br>Game development and interactive systems</li>
+                                <li><span>B.S. Computer Science</span>Working on my 4-year degree</li>
+                                <li><span>Coursework</span>Data Structures, Algorithms, Object-Oriented Programming</li>
+                                <li><span>Focus</span>Game development and interactive systems</li>
                             </ul>
                         </div>
                     </div>
@@ -89,32 +133,38 @@
             </div>
         </div>
 
-        <!---Projects Section-->
+        <!---Quests (Projects)-->
         <div id="projects">
             <div class="container">
-                <h1 class="sub-title">My Projects</h1>
+                <h1 class="sub-title"><span class="title-num">02</span> Level Select</h1>
                 <p class="section-intro">
-                    Games and tools I've built from scratch in C++. Every project below is on GitHub &mdash;
-                    click through to read the source.
+                    Here are the games I've built from scratch in C++ and the Unix systems I've set up.
+                    The game code is on GitHub if you want to look through it.
                 </p>
                 <div class="project-list">
 
-                    <!--Project 1: Twenty Questions-->
+                    <!--Level 1: Twenty Questions-->
                     <div class="project-card">
+                        <div class="card-header">
+                            <span class="level-num">LEVEL 1-1</span>
+                            <span class="cleared"><i class="fas fa-check"></i> CLEARED</span>
+                        </div>
                         <div class="project-icon"><i class="fas fa-code-branch"></i></div>
                         <h2>Twenty Questions</h2>
                         <p class="project-blurb">
                             A guessing game where the computer tries to figure out what you're thinking of.
-                            The computer's knowledge is stored as a binary tree, and every time it guesses wrong
-                            it asks you for a new question and grafts it into the tree &mdash; so the game
-                            genuinely gets smarter the more you play it. Trees can be saved to disk and reloaded later.
+                            Everything it knows is stored in a binary tree. When it guesses wrong, it asks you for a
+                            new question and adds it to the tree, so it actually gets smarter the more you play.
+                            You can save the tree to a file and load it back later.
                         </p>
+                        <h3 class="list-title">Objectives Completed</h3>
                         <ul class="project-points">
-                            <li>Custom <code>Node</code> and <code>Tree</code> structs with recursive destructors for clean memory management</li>
-                            <li>Live tree restructuring &mdash; new questions are inserted mid-game without losing branches</li>
-                            <li>Save/load to two file formats via recursive pre-order traversal</li>
-                            <li>Command-line flags for loading a saved game (<code>-f</code>) and help text (<code>-h</code>)</li>
+                            <li>Built my own <code>Node</code> and <code>Tree</code> structs, with recursive destructors to clean up memory</li>
+                            <li>Adds new questions in the middle of a game without losing any branches</li>
+                            <li>Saves and loads trees in two file formats using a recursive pre-order traversal</li>
+                            <li>Command-line flags to load a saved game (<code>-f</code>) or show help (<code>-h</code>)</li>
                         </ul>
+                        <h3 class="list-title">Loot</h3>
                         <div class="project-tags">
                             <span>C++</span>
                             <span>Binary Trees</span>
@@ -123,28 +173,34 @@
                             <span>Pointers</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://github.com/Nsyhanath/20-Questions" target="_blank" rel="noopener">
-                                <i class="fab fa-github"></i> View on GitHub
+                            <a href="https://github.com/Nsyhanath/20-Questions" target="_blank" rel="noopener" class="play-btn">
+                                <i class="fas fa-play"></i> PLAY SOURCE
                             </a>
                         </div>
                     </div>
 
-                    <!--Project 2: Sticks and Stones-->
+                    <!--Level 2: Sticks and Stones-->
                     <div class="project-card">
+                        <div class="card-header">
+                            <span class="level-num">LEVEL 1-2</span>
+                            <span class="cleared"><i class="fas fa-check"></i> CLEARED</span>
+                        </div>
                         <div class="project-icon"><i class="fas fa-layer-group"></i></div>
                         <h2>Sticks and Stones</h2>
                         <p class="project-blurb">
-                            A two-player take-away game (the classic game of Nim). Players take turns removing
-                            stones from a single pile, and whoever takes the last stone wins. The optional computer
-                            opponent plays the mathematically optimal strategy &mdash; it calculates the
-                            <em>nim sum</em> with an XOR across every pile and always moves to force a win when one exists.
+                            A two-player take-away game based on the classic game of Nim. Players take turns removing
+                            stones from the piles, and whoever takes the last stone wins. You can also play against the
+                            computer, which uses the best possible strategy: it finds the <em>nim sum</em> by XORing every
+                            pile together and always makes the winning move when there is one.
                         </p>
+                        <h3 class="list-title">Objectives Completed</h3>
                         <ul class="project-points">
-                            <li>Optimal AI using bitwise XOR to compute the nim sum and find the winning move</li>
-                            <li>Randomized board generation with <code>srand</code> for a different game every run</li>
-                            <li>Full input validation &mdash; no illegal moves, no over-drawing a pile</li>
-                            <li>Configurable via CLI flags for piles (<code>-p</code>), stones (<code>-s</code>), and computer opponent (<code>-c</code>)</li>
+                            <li>Computer opponent that uses bitwise XOR to find the nim sum and the winning move</li>
+                            <li>Random board setup with <code>srand</code>, so every game is different</li>
+                            <li>Input validation, so you can't make an illegal move or take more stones than a pile has</li>
+                            <li>Command-line flags to set the number of piles (<code>-p</code>) and stones (<code>-s</code>) and to turn on the computer opponent (<code>-c</code>)</li>
                         </ul>
+                        <h3 class="list-title">Loot</h3>
                         <div class="project-tags">
                             <span>C++</span>
                             <span>Game AI</span>
@@ -153,8 +209,46 @@
                             <span>Combinatorial Game Theory</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://github.com/Nsyhanath/Sticks-and-Stones" target="_blank" rel="noopener">
-                                <i class="fab fa-github"></i> View on GitHub
+                            <a href="https://github.com/Nsyhanath/Sticks-and-Stones" target="_blank" rel="noopener" class="play-btn">
+                                <i class="fas fa-play"></i> PLAY SOURCE
+                            </a>
+                        </div>
+                    </div>
+
+                    <!--World 2: Unix home lab (academic project, no public repo)-->
+                    <div class="project-card">
+                        <div class="card-header">
+                            <span class="level-num">WORLD 2-1</span>
+                            <span class="cleared"><i class="fas fa-check"></i> CLEARED</span>
+                        </div>
+                        <div class="project-icon"><i class="fas fa-server"></i></div>
+                        <h2>Multi-OS Network Infrastructure</h2>
+                        <p class="project-blurb">
+                            My Unix home lab. I set up six different Unix systems as virtual machines in VMware and
+                            connected them to one internal domain, so one account can log in on any of them. I built
+                            every part myself, including the directory server, DNS and my own certificate authority.
+                            This was an academic project from February to May 2026.
+                        </p>
+                        <h3 class="list-title">Objectives Completed</h3>
+                        <ul class="project-points">
+                            <li>Ran OpenBSD, FreeBSD, AlmaLinux, Ubuntu and OpenIndiana as virtual machines in VMware</li>
+                            <li>Set up shared logins with OpenLDAP over TLS, connected to each OS through SSSD, NSS and <code>ypldap</code></li>
+                            <li>Created my own OpenSSL certificate authority to issue and revoke TLS certificates for LDAP, mail, nginx and a self-hosted GitLab</li>
+                            <li>Ran BIND DNS for the internal domain</li>
+                        </ul>
+                        <h3 class="list-title">Loot</h3>
+                        <div class="project-tags">
+                            <span>Unix / Linux</span>
+                            <span>OpenLDAP</span>
+                            <span>SSSD</span>
+                            <span>BIND DNS</span>
+                            <span>OpenSSL CA</span>
+                            <span>TLS</span>
+                            <span>VMware</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#contact" class="play-btn">
+                                <i class="fas fa-comments"></i> ASK ME ABOUT IT
                             </a>
                         </div>
                     </div>
@@ -162,69 +256,87 @@
                 </div>
                 <div class="projects-cta">
                     <a href="https://github.com/Nsyhanath" target="_blank" rel="noopener" class="btn">
-                        <i class="fab fa-github"></i> See all my repositories
+                        <i class="fab fa-github"></i> View All Save Files
                     </a>
                 </div>
             </div>
         </div>
 
-        <!---Skills Section-->
+        <!---Skill Tree-->
         <div id="skills-section">
             <div class="container">
-                <h1 class="sub-title">What I Work With</h1>
+                <h1 class="sub-title"><span class="title-num">03</span> Skill Tree</h1>
                 <div class="skills-list">
 
                     <div class="skill-card">
-                        <i class="fas fa-terminal"></i>
+                        <div class="skill-top">
+                            <i class="fas fa-terminal"></i>
+                            <span class="badge main">MAIN</span>
+                        </div>
                         <h2>Languages</h2>
                         <p>
-                            C++ is my primary language &mdash; it's what I build games and systems in.
-                            I also work in HTML, CSS, and JavaScript for the web.
+                            C++ is my main language and what I use to build games and systems.
+                            I also use HTML, CSS and JavaScript for web projects.
                         </p>
                     </div>
 
                     <div class="skill-card">
-                        <i class="fas fa-sitemap"></i>
+                        <div class="skill-top">
+                            <i class="fas fa-sitemap"></i>
+                            <span class="badge">UNLOCKED</span>
+                        </div>
                         <h2>Data Structures &amp; Algorithms</h2>
                         <p>
-                            Binary trees, linked structures, recursion, and dynamic memory management.
-                            I build these from scratch rather than reaching for a library.
+                            Binary trees, linked structures, recursion and dynamic memory management.
+                            I like building these from scratch instead of just using a library.
                         </p>
                     </div>
 
                     <div class="skill-card">
-                        <i class="fas fa-gamepad"></i>
+                        <div class="skill-top">
+                            <i class="fas fa-gamepad"></i>
+                            <span class="badge">UNLOCKED</span>
+                        </div>
                         <h2>Game Logic &amp; AI</h2>
                         <p>
-                            Turn-based game loops, state management, and decision-making opponents &mdash;
-                            including provably optimal strategies based on game theory.
+                            Turn-based game loops, game state and computer opponents, including ones that
+                            use game theory to play the best possible move.
                         </p>
                     </div>
 
                     <div class="skill-card">
-                        <i class="fas fa-laptop-code"></i>
+                        <div class="skill-top">
+                            <i class="fas fa-laptop-code"></i>
+                            <span class="badge">UNLOCKED</span>
+                        </div>
                         <h2>Web Development</h2>
                         <p>
-                            Responsive front-end layouts with semantic HTML and modern CSS,
-                            including Flexbox and Grid.
+                            Responsive websites built with HTML and CSS, using Flexbox and Grid
+                            for layout.
                         </p>
                     </div>
 
                     <div class="skill-card">
-                        <i class="fab fa-git-alt"></i>
+                        <div class="skill-top">
+                            <i class="fab fa-git-alt"></i>
+                            <span class="badge">UNLOCKED</span>
+                        </div>
                         <h2>Tools &amp; Workflow</h2>
                         <p>
-                            Git and GitHub for version control, command-line development,
-                            and building programs that take real CLI arguments.
+                            Git and GitHub for version control, working from the command line
+                            and writing programs that take command-line arguments.
                         </p>
                     </div>
 
                     <div class="skill-card">
-                        <i class="fas fa-pen-nib"></i>
+                        <div class="skill-top">
+                            <i class="fas fa-pen-nib"></i>
+                            <span class="badge">UNLOCKED</span>
+                        </div>
                         <h2>Design &amp; Media</h2>
                         <p>
-                            Photography and content creation, which feed directly into
-                            UI/UX work and visual design sense.
+                            Photography and content creation, which help me with UI/UX
+                            and visual design.
                         </p>
                     </div>
 
@@ -232,68 +344,314 @@
             </div>
         </div>
 
-        <!---Contact Section-->
+        <!---Multiplayer Lobby (Contact)-->
         <div id="contact">
             <div class="container">
                 <div class="row">
                     <div class="contact-left">
-                        <h1 class="sub-title">Get In Touch</h1>
-                        <p>
-                            I'm always open to talking about game development, new projects,
-                            or entry-level software engineering opportunities.
-                        </p>
-                        <p><i class="fas fa-paper-plane"></i> nathan112202@gmail.com</p>
-                        <div class="social-icons">
-                            <a href="https://github.com/Nsyhanath" target="_blank" rel="noopener" aria-label="GitHub">
-                                <i class="fab fa-github"></i>
+                        <h1 class="sub-title"><span class="title-num">04</span> Multiplayer Lobby</h1>
+                        <div class="lobby">
+                            <p>
+                                I'm always happy to talk about game development, new projects or
+                                entry-level software engineering roles. Send me a party invite!
+                            </p>
+                            <p class="email-line"><i class="fas fa-paper-plane"></i> nathan112202@gmail.com</p>
+                            <div class="social-icons">
+                                <a href="https://github.com/Nsyhanath" target="_blank" rel="noopener" aria-label="GitHub">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <!--Add your own links below when you're ready-->
+                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            </div>
+                            <a href="mailto:nathan112202@gmail.com" class="btn btn-2">
+                                <i class="fas fa-user-plus"></i> Send Party Invite
                             </a>
-                            <!--Add your own links below when you're ready-->
-                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <p class="insert-coin">INSERT COIN TO CONTINUE</p>
                         </div>
-                        <a href="mailto:nathan112202@gmail.com" class="btn btn-2">Email Me</a>
                     </div>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; Nathan Syhanath. Built from scratch.</p>
+                <p>&copy; Nathan Syhanath. Built from scratch. &nbsp;|&nbsp; <a href="#header">&#9650; Continue?</a></p>
+                <p class="hint">psst&hellip; try the classic cheat code &uarr;&uarr;&darr;&darr;&larr;&rarr;&larr;&rarr;BA</p>
             </div>
         </div>
 
     <script>
-
+        //---------- tabs ----------
         var tablinks = document.getElementsByClassName("tab-links");
         var tabcontents = document.getElementsByClassName("tab-contents");
-        function opentab(tabname){
-            for(tablink of tablinks){
+        function opentab(event, tabname){
+            for(var tablink of tablinks){
                 tablink.classList.remove("active-link");
             }
-            for(tabcontent of tabcontents){
+            for(var tabcontent of tabcontents){
                 tabcontent.classList.remove("active-tab");
             }
             event.currentTarget.classList.add("active-link");
-            //this line was missing before, which is why the tabs never switched
             document.getElementById(tabname).classList.add("active-tab");
         }
 
-    </script>
+        //---------- back-to-title button ----------
+        var toTitle = document.getElementById("to-title");
+        window.addEventListener("scroll", function(){
+            toTitle.classList.toggle("show", window.scrollY > window.innerHeight * 0.8);
+        }, { passive: true });
 
-    <script>
-
-        var sidem = document.getElementById("sidemenu");
-
-        function openmenu(){
-            sidem.style.right = "0";
-        }
-        function closemenu(){
-            sidem.style.right = "-200px";
-        }
-
-        //close the mobile menu after tapping a nav link
-        document.querySelectorAll("#sidemenu a").forEach(function(link){
-            link.addEventListener("click", closemenu);
+        //---------- arrow keys move between title menu buttons ----------
+        var menuBtns = Array.prototype.slice.call(document.querySelectorAll(".title-menu .block-btn"));
+        document.querySelector(".title-menu").addEventListener("keydown", function(e){
+            var i = menuBtns.indexOf(document.activeElement);
+            if(i === -1) return;
+            if(e.key === "ArrowDown" || e.key === "ArrowRight"){ e.preventDefault(); menuBtns[(i + 1) % menuBtns.length].focus(); }
+            if(e.key === "ArrowUp" || e.key === "ArrowLeft"){ e.preventDefault(); menuBtns[(i - 1 + menuBtns.length) % menuBtns.length].focus(); }
         });
 
+        //---------- 8-bit blocky world on the title screen ----------
+        (function(){
+            var canvas = document.getElementById("world");
+            var ctx = canvas.getContext("2d");
+            var header = document.getElementById("header");
+            var PIXEL = 4;      //each canvas pixel is drawn as a 4x4 screen pixel
+            var B = 8;          //blocks are 8x8 canvas pixels
+            var SPEED = 7;      //how fast the world scrolls (canvas pixels per second)
+            var W, H, rows, sky;
+            var offset = 0, last = 0, running = true;
+            var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+            //deterministic pseudo-random number in [0,1) from two integers,
+            //so the same world column always looks the same
+            function rand(a, b){
+                var h = Math.imul(a, 374761393) + Math.imul(b, 668265263);
+                h = Math.imul(h ^ (h >>> 13), 1274126177);
+                return ((h ^ (h >>> 16)) >>> 0) / 4294967296;
+            }
+            function pick(list, r){ return list[Math.floor(r * list.length)]; }
+
+            //build an 8x8 texture tile, one pixel at a time
+            function makeTile(seed, colorAt){
+                var c = document.createElement("canvas");
+                c.width = c.height = B;
+                var t = c.getContext("2d");
+                for(var y = 0; y < B; y++){
+                    for(var x = 0; x < B; x++){
+                        t.fillStyle = colorAt(x, y, rand(seed * 64 + x, y + seed * 7));
+                        t.fillRect(x, y, 1, 1);
+                    }
+                }
+                return c;
+            }
+            var GRASS = ["#4f8a3a", "#3f7330", "#5c9a44"];
+            var DIRT = ["#6b4a2f", "#5a3d26", "#7a5636", "#4f3420"];
+            var STONE = ["#6e6e78", "#5d5d66", "#80808a", "#55555e"];
+            var LEAF = ["#2f6a2c", "#245a22", "#3a7a34", "#1c4a1b"];
+            var ORE = ["#22e6ff", "#ff2e88", "#ffe14d"];
+            var tiles = { grass: [], dirt: [], stone: [], ore: [], log: [], leaf: [] };
+            for(var v = 0; v < 3; v++){
+                tiles.grass.push(makeTile(10 + v, function(x, y, r){
+                    var edge = 2 + (rand(x, v) > 0.5 ? 1 : 0);
+                    return y < edge ? pick(GRASS, r) : pick(DIRT, r);
+                }));
+                tiles.dirt.push(makeTile(20 + v, function(x, y, r){ return pick(DIRT, r); }));
+                tiles.stone.push(makeTile(30 + v, function(x, y, r){ return pick(STONE, r); }));
+                tiles.ore.push(makeTile(40 + v, function(x, y, r){
+                    return r > 0.82 ? ORE[v] : pick(STONE, r);
+                }));
+                tiles.log.push(makeTile(50 + v, function(x, y, r){
+                    return (x === 0 || x === 7) ? "#3d2915" : (x % 3 === 0 ? "#4a321c" : (r > 0.5 ? "#5a3d22" : "#664629"));
+                }));
+                tiles.leaf.push(makeTile(60 + v, function(x, y, r){ return pick(LEAF, r); }));
+            }
+
+            //ground height (in blocks) for a world column
+            function groundAt(col){
+                var base = Math.floor(rows * 0.2);
+                var h = base + Math.round(2.2 * Math.sin(col * 0.13) + 1.5 * Math.sin(col * 0.047 + 2) + (rand(col, 7) - 0.5) * 1.4);
+                return Math.max(3, h);
+            }
+            //distant hills, drawn as flat silhouettes
+            function hillAt(col){
+                return Math.floor(rows * 0.2) + 3 + Math.round(3 * Math.sin(col * 0.09 + 1) + 2 * Math.sin(col * 0.031));
+            }
+            function hasTree(col){
+                return rand(col, 99) < 0.12 && rand(col - 1, 99) >= 0.12 && rand(col + 1, 99) >= 0.12;
+            }
+
+            function resize(){
+                W = Math.ceil(header.clientWidth / PIXEL);
+                H = Math.ceil(header.clientHeight / PIXEL);
+                rows = Math.ceil(H / B);
+                canvas.width = W;
+                canvas.height = H;
+                //pre-draw the dusk sky gradient once per resize
+                sky = document.createElement("canvas");
+                sky.width = 1; sky.height = H;
+                var s = sky.getContext("2d");
+                var g = s.createLinearGradient(0, 0, 0, H);
+                g.addColorStop(0, "#0b0618");
+                g.addColorStop(0.45, "#2a1450");
+                g.addColorStop(0.75, "#6a2463");
+                g.addColorStop(1, "#a8436b");
+                s.fillStyle = g;
+                s.fillRect(0, 0, 1, H);
+                draw(last);
+            }
+
+            function draw(time){
+                var t = time / 1000;
+                ctx.imageSmoothingEnabled = false;
+                ctx.drawImage(sky, 0, 0, W, H);
+
+                //twinkling stars
+                for(var i = 0; i < 70; i++){
+                    var sx = Math.floor(rand(i, 1) * W), sy = Math.floor(rand(i, 2) * H * 0.55);
+                    var twinkle = 0.35 + 0.65 * Math.abs(Math.sin(t * (0.5 + rand(i, 3)) + i));
+                    ctx.fillStyle = "rgba(255,255,255," + (reduceMotion ? 0.8 : twinkle).toFixed(2) + ")";
+                    ctx.fillRect(sx, sy, 1, 1);
+                }
+
+                //square pixel moon
+                var mx = Math.floor(W * 0.8), my = Math.floor(H * 0.12);
+                ctx.fillStyle = "#f4ecd2"; ctx.fillRect(mx, my, 12, 12);
+                ctx.fillStyle = "#d9cfae"; ctx.fillRect(mx + 2, my + 3, 3, 3); ctx.fillRect(mx + 7, my + 7, 2, 2); ctx.fillRect(mx + 8, my + 2, 2, 2);
+
+                //blocky clouds drifting slowly
+                ctx.fillStyle = "rgba(200,170,235,0.28)";
+                for(var c = 0; c < 6; c++){
+                    var span = W + 80;
+                    var cx = Math.floor(((rand(c, 4) * span - offset * 0.25) % span + span) % span) - 40;
+                    var cy = Math.floor(H * (0.08 + rand(c, 5) * 0.3));
+                    var cw = 16 + Math.floor(rand(c, 6) * 24);
+                    ctx.fillRect(cx, cy, cw, 4);
+                    ctx.fillRect(cx + 4, cy - 4, cw - 12, 4);
+                }
+
+                //far hills (parallax: they scroll slower than the ground)
+                var far = offset * 0.4;
+                var farStart = Math.floor(far / B), farShift = Math.floor(far % B);
+                ctx.fillStyle = "#24133d";
+                for(var f = 0; f <= Math.ceil(W / B) + 1; f++){
+                    var fh = hillAt(farStart + f) * B;
+                    ctx.fillRect(f * B - farShift, H - fh, B, fh);
+                }
+
+                //near terrain: grass on top, dirt, then stone with the odd ore
+                var px = Math.floor(offset);
+                var start = Math.floor(px / B), shift = px % B;
+                var cols = Math.ceil(W / B) + 2;
+                for(var k = -1; k < cols; k++){
+                    var col = start + k, x = k * B - shift, g = groundAt(col);
+                    for(var r = 0; r < g; r++){
+                        var y = H - (r + 1) * B, tile;
+                        var vr = Math.floor(rand(col, r + 300) * 3);
+                        if(r === g - 1) tile = tiles.grass[vr];
+                        else if(r >= g - 4) tile = tiles.dirt[vr];
+                        else if(rand(col, r) < 0.06) tile = tiles.ore[vr];
+                        else tile = tiles.stone[vr];
+                        ctx.drawImage(tile, x, y);
+                    }
+                }
+                //trees (drawn after the ground so leaves overlap neighbours)
+                for(var k2 = -2; k2 < cols + 1; k2++){
+                    var tc = start + k2;
+                    if(!hasTree(tc)) continue;
+                    var tx = k2 * B - shift, gy = H - groundAt(tc) * B;
+                    var trunk = 3 + Math.floor(rand(tc, 5) * 2);
+                    for(var tr = 1; tr <= trunk; tr++) ctx.drawImage(tiles.log[tr % 3], tx, gy - tr * B);
+                    var top = gy - trunk * B;
+                    for(var lx = -1; lx <= 1; lx++){
+                        ctx.drawImage(tiles.leaf[(lx + 3) % 3], tx + lx * B, top - B);
+                        ctx.drawImage(tiles.leaf[(lx + 4) % 3], tx + lx * B, top);
+                    }
+                    ctx.drawImage(tiles.leaf[1], tx, top - 2 * B);
+                }
+            }
+
+            function frame(time){
+                if(!running) return;
+                var dt = last ? Math.min((time - last) / 1000, 0.1) : 0;
+                last = time;
+                offset += dt * SPEED;
+                draw(time);
+                requestAnimationFrame(frame);
+            }
+
+            window.addEventListener("resize", resize);
+            resize();
+            if(!reduceMotion){
+                //only animate while the title screen is on screen
+                if("IntersectionObserver" in window){
+                    new IntersectionObserver(function(entries){
+                        var visible = entries[0].isIntersecting;
+                        if(visible && !running){ running = true; last = 0; requestAnimationFrame(frame); }
+                        if(!visible) running = false;
+                    }).observe(header);
+                }
+                requestAnimationFrame(frame);
+            }
+        })();
+
+        //---------- achievement popups ----------
+        var popup = document.getElementById("achievement");
+        var popupText = document.getElementById("achievement-text");
+        var popupTimer;
+        var unlocked = {};
+        function unlock(id, text){
+            if(unlocked[id]) return;
+            unlocked[id] = true;
+            addScore(1000);
+            popupText.textContent = text;
+            popup.classList.add("show");
+            clearTimeout(popupTimer);
+            popupTimer = setTimeout(function(){ popup.classList.remove("show"); }, 3200);
+        }
+
+        //---------- score counter in the HUD ----------
+        var score = 0;
+        var scoreEl = document.getElementById("score");
+        function addScore(n){
+            score += n;
+            scoreEl.textContent = String(score).padStart(6, "0");
+        }
+
+        //unlock an achievement the first time each section scrolls into view
+        var sectionAchievements = {
+            "about": "Met Player 1",
+            "projects": "Found the Level Select",
+            "skills-section": "Explored the Skill Tree",
+            "contact": "Reached the Lobby"
+        };
+        if("IntersectionObserver" in window){
+            var observer = new IntersectionObserver(function(entries){
+                entries.forEach(function(entry){
+                    if(entry.isIntersecting){
+                        unlock(entry.target.id, sectionAchievements[entry.target.id]);
+                    }
+                });
+            }, { threshold: 0.3 });
+            Object.keys(sectionAchievements).forEach(function(id){
+                observer.observe(document.getElementById(id));
+            });
+        }
+
+        //clicking any project/github link also earns points
+        document.querySelectorAll(".play-btn").forEach(function(btn){
+            btn.addEventListener("click", function(){ unlock("source", "Read the Source Code"); });
+        });
+
+        //---------- cheat code easter egg ----------
+        var code = ["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b","a"];
+        var pos = 0;
+        document.addEventListener("keydown", function(e){
+            var key = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+            pos = (key === code[pos]) ? pos + 1 : (key === code[0] ? 1 : 0);
+            if(pos === code.length){
+                pos = 0;
+                document.body.classList.toggle("cheat-mode");
+                unlock("cheat", "Cheat Code Activated!");
+            }
+        });
     </script>
 
     </body>
